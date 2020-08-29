@@ -29,7 +29,6 @@ module.exports = async ({ email, password }, res) => {
           id: user.id,
           name: user.name,
           email: user.email,
-          birthday: user.birthday,
         },
         jwtConfig.privateKey,
         {

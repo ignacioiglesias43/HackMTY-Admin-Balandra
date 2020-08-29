@@ -3,7 +3,6 @@ const express = require("express");
 const cors = require("cors");
 
 // Components
-const Place = require("./components/Place/Place");
 const User = require("./components/Users/User");
 
 const app = express();
@@ -12,7 +11,6 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use("/lugares", Place.api);
 app.use("/usuarios", User.api);
 
 app.listen(3000, () => {
