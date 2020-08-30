@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <h1>Reserve</h1>
-    <v-form>
+    <v-form ref="form">
       <v-row>
         <v-col cols="12" sm="6" md="3">
           <v-menu
@@ -20,6 +20,7 @@
                 readonly
                 v-bind="attrs"
                 v-on="on"
+                :rules="[() => !!date || 'This field is required']"
               ></v-text-field>
             </template>
             <v-date-picker v-model="date" no-title scrollable>
@@ -50,6 +51,7 @@
                 readonly
                 v-bind="attrs"
                 v-on="on"
+                :rules="[() => !!timeIn || 'This field is required']"
               ></v-text-field>
             </template>
             <v-time-picker v-model="timeIn" scrollable>
@@ -80,6 +82,7 @@
                 readonly
                 v-bind="attrs"
                 v-on="on"
+                :rules="[() => !!timeOut || 'This field is required']"
               ></v-text-field>
             </template>
             <v-time-picker v-model="timeOut" scrollable>
@@ -109,6 +112,7 @@
                 readonly
                 v-bind="attrs"
                 v-on="on"
+                :rules="[() => !!car || 'This field is required']"
               ></v-text-field>
             </template>
             <v-list>
@@ -133,7 +137,7 @@
               <v-spacer></v-spacer>
               <v-btn color="error">Delete</v-btn>
             </list-item>
-            <v-btn @click="changeAPM">Add Person</v-btn>
+            <v-btn @click="addPeople">Add Person</v-btn>
           </v-list>
         </v-col>
       </v-row>
@@ -151,7 +155,7 @@ de salida. menuCar: para abrir y cerrar el menu del tipo de auto.
 
 <script>
 import AddPersonModal from "./AddPersonModal";
-import { mapMutations } from 'vuex'
+import { mapMutations } from "vuex";
 
 export default {
   name: "ReserverBox",
@@ -172,12 +176,17 @@ export default {
     menuTPO: false,
     menuCar: false,
   }),
-  components:{
-      AddPersonModal
+  components: {
+    AddPersonModal,
   },
-  methods:{
-      ...mapMutations(['changeAPM'])
-  }
+  methods: {
+    ...mapMutations(["changeAPM"]),
+    addPeople() {
+      if (this.$refs.form.validate()) {
+        this.changeAPM();
+      }
+    },
+  },
 };
 </script>
 

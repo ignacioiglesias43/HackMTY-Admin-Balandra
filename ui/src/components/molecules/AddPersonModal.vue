@@ -43,8 +43,8 @@
         </v-row>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn @click="changeAPM">Cancel</v-btn>
-          <v-btn color="error" @click="changeAPM">Ok</v-btn>
+          <v-btn color="error" @click="changeAPM">Cancel</v-btn>
+          <v-btn @click="changeAPM">Ok</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
