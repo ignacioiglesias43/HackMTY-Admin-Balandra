@@ -44,7 +44,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="error" @click="changeAPM">Cancel</v-btn>
-          <v-btn @click="changeAPM">Ok</v-btn>
+          <v-btn @click="goToMap">Ok</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -65,9 +65,15 @@ export default {
     qntChild: 0,
     qntOld: 0,
     qntHand: 0,
+    qn: null,
   }),
   methods: {
-    ...mapMutations(["changeAPM"]),
+    ...mapMutations(["changeAPM","changePersons"]),
+    goToMap(){
+        this.qn = this.qntAdult + this.qntChild + this.qntOld
+        this.changePersons(this.qn)
+        this.$router.push({path:'/map'})
+    }
   },
   computed: {
     ...mapState(["addPersonModal"]),
