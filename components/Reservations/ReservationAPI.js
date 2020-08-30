@@ -11,8 +11,8 @@ Reservation.use(express.urlencoded({ extended: false }));
 Reservation.use(express.json());
 Reservation.use(cors());
 
-Reservation.post("/", (req, res) => {
-  services.reserve(req.body, res);
+Reservation.post("/:data", (req, res) => {
+  services.reserve(req.params, res);
 });
 
 Reservation.get("/", (req, res) => {
