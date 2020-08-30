@@ -1,11 +1,7 @@
 <template>
   <div class="map-container">
-<<<<<<< HEAD
     <h3>Has "click" sobre la zona en la que deseas estar ubicada</h3>
-    <mapBoxComponent :center="center">
-=======
     <mapBoxComponent :center="center" v-if="loaded">
->>>>>>> 0dc516e8571776f6a47395310ded1284df56829e
       <MglNavigationControl position="bottom-right" />
       <MglMarker
         v-for="(item, index) in places"
