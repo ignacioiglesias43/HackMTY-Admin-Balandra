@@ -7,6 +7,10 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     addPersonModal: false,
+    signModal: {
+      state: false,
+      type: false,
+    },
     day: null, 
     timeIn: null, 
     timeOut: null,
@@ -17,6 +21,9 @@ export default new Vuex.Store({
   mutations: {
     changeAPM(state){
       state.addPersonModal = !state.addPersonModal
+    },
+    changeSM(state, payload){
+      state.signModal = payload
     },
     changeDate(state, payload){
       state.day = payload

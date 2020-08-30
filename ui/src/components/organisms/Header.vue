@@ -8,18 +8,21 @@ La portada, el slider no slider
             width=300
         ></v-img>
        </a>
-          <LoginMessage />
-      
+        <LoginMessage />
+      <LoginModal />
   </header>
 </template>
 
 <script>
 import LoginMessage from '../molecules/LoginMessage'
+import LoginModal from './LoginModal'
+
 export default {
     name: 'Header',
     components:{
-        LoginMessage
-    }
+        LoginMessage,
+        LoginModal,
+    },
 }
 </script>
 
