@@ -2,7 +2,6 @@
   <div class="map-container">
     <mapBoxComponent :center="center" v-if="loaded">
       <MglNavigationControl position="bottom-right" />
-      <MglGeolocateControl position="bottom-right" />
       <MglMarker
         v-for="(item, index) in places"
         v-bind:key="index"
@@ -21,7 +20,6 @@ import { mapState } from "vuex";
 import mapBoxComponent from "../molecules/mapBoxComponent";
 import {
   MglNavigationControl,
-  MglGeolocateControl,
   MglMarker,
 } from "vue-mapbox";
 
@@ -38,7 +36,6 @@ export default {
   components: {
     mapBoxComponent,
     MglNavigationControl,
-    MglGeolocateControl,
     MglMarker,
   },
   created() {
