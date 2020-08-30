@@ -23,7 +23,7 @@ module.exports = {
       phone: {
         allowNull: true,
         type: Sequelize.STRING,
-      },
+      } /* 
       createdAt: {
         allowNull: true,
         type: Sequelize.DATE,
@@ -31,7 +31,7 @@ module.exports = {
       updatedAt: {
         allowNull: true,
         type: Sequelize.DATE,
-      },
+      }, */,
     });
   },
   down: (queryInterface, Sequelize) => {
