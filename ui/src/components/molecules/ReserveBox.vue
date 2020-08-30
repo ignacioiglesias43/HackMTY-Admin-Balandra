@@ -1,9 +1,4 @@
 <template>
-<div class="b-reserve">
-  <v-container class="photo-reserve">
-    
-  </v-container>
-
   <v-container class="reserve">
     <h1>Reserve</h1>
     <v-form ref="form">
@@ -21,6 +16,7 @@
             <template v-slot:activator="{ on, attrs }">
               <v-text-field
                 v-model="date"
+                prepend-icon=mdi-calendar-clock
                 label="Registration date"
                 readonly
                 v-bind="attrs"
@@ -52,6 +48,7 @@
             <template v-slot:activator="{ on, attrs }">
               <v-text-field
                 v-model="timeIn"
+                prepend-icon=mdi-alarm
                 label="Approx. entry time"
                 readonly
                 v-bind="attrs"
@@ -83,6 +80,7 @@
             <template v-slot:activator="{ on, attrs }">
               <v-text-field
                 v-model="timeOut"
+                prepend-icon=mdi-alarm
                 label="Approx. exit time"
                 readonly
                 v-bind="attrs"
@@ -113,6 +111,7 @@
             <template v-slot:activator="{ on, attrs }">
               <v-text-field
                 v-model="car"
+                prepend-icon=mdi-car
                 label="Vehicle"
                 readonly
                 v-bind="attrs"
@@ -151,7 +150,6 @@
     </v-form>
     <AddPersonModal />
   </v-container>
-  </div>
 </template>
 
 date: variable donde se guarda la fecha seleccionada por el usuario. timeIn:
@@ -209,21 +207,15 @@ export default {
 </script>
 
 <style>
-.b-reserve{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+
 .reserve {
   text-align: center;
   flex-basis: calc(33.3% - 10px);
   border: 0.1rem solid #B5B5B5;
   padding: 50px;
+  margin: 5% 0%;
   background-color: #ffffff;
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.397), 0 17px 50px 0 rgba(0,0,0,0.397);
-}
-.photo-reserve{
-  
 }
 
 </style>

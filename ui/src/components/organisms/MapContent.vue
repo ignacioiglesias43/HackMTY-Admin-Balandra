@@ -1,5 +1,6 @@
 <template>
   <div class="map-container">
+    <h3>Has "click" sobre la zona en la que deseas estar ubicada</h3>
     <mapBoxComponent :center="center">
       <MglNavigationControl position="bottom-right" />
       <MglGeolocateControl position="bottom-right" />
@@ -102,5 +103,8 @@ export default {
 <style scoped>
 .map-container {
   height: 50vh;
+  border: 0.1rem solid #B5B5B5;
+  padding: 1%;
+  margin: 5% 0%;
 }
 </style>
