@@ -11,15 +11,15 @@ Reservation.use(express.urlencoded({ extended: false }));
 Reservation.use(express.json());
 Reservation.use(cors());
 
-Reservation.post("/", (req, res) => {
-  services.reserve(req.body, res);
+Reservation.get("/reserve/:data", (req, res) => {
+  services.reserve(req.params, res);
 });
 
 Reservation.get("/", (req, res) => {
   services.getAll(req, res);
 });
 
-Reservation.get("/:id", middleware, (req, res) => {
+Reservation.get("/:id", (req, res) => {
   services.getById(req.params, res);
 });
 

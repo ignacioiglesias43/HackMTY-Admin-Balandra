@@ -12,10 +12,13 @@ export default new Vuex.Store({
       type: false,
     },
     day: null, 
+    placeSelected:[],
     timeIn: null, 
     timeOut: null,
     car: null,
+    qtn: null,
     stateLight: 4,
+    hdc: false,
     persons: 0,
   },
   mutations: {
@@ -39,6 +42,15 @@ export default new Vuex.Store({
     },
     changePersons(state, payload){
       state.persons = payload
+    },
+    changeQtn(state, payload){
+      state.qtn = payload
+    },
+    changePlace(state, payload){
+      state.placeSelected = payload
+    },
+    changeHdc(state, payload){
+      state.hdc = payload
     },
     setStateLight(state, payload){
       state.stateLight = payload
