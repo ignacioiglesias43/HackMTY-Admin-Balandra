@@ -35,51 +35,55 @@ module.exports = async (
   let response = {
     message: "Error al realizar su reservacion.",
   };
-  if (userId && placeId && date && arrival && departure) {
-    const reserve = await dal.create({
-      userId,
-      placeId,
-      parkingId,
-      adults,
-      older_adults,
-      children,
-      handicapped,
-      date,
-      arrival,
-      departure,
-    });
-    if (reserve) {
-      const token = jwt.sign(
-        {
-          userId,
-          placeId,
-          parkingId,
-          adults,
-          older_adults,
-          children,
-          handicapped,
-          date,
-          arrival,
-          departure,
-        },
-        jwtConfig.privateKey,
-        {
-          expiresIn: jwtConfig.expiration,
-        }
-      );
-      if (token) {
-        status = 200;
-        response = {
-          message: "Su reservacion ha sido registrada con exito.",
-          data: {
-            reserve,
+  try {
+    if (userId && placeId && date && arrival && departure) {
+      const reserve = await dal.create({
+        userId,
+        placeId,
+        parkingId,
+        adults,
+        older_adults,
+        children,
+        handicapped,
+        date,
+        arrival,
+        departure,
+      });
+      if (reserve) {
+        const token = jwt.sign(
+          {
+            userId,
+            placeId,
+            parkingId,
+            adults,
+            older_adults,
+            children,
+            handicapped,
+            date,
+            arrival,
+            departure,
           },
-          token,
-        };
+          jwtConfig.privateKey,
+          {
+            expiresIn: jwtConfig.expiration,
+          }
+        );
+        if (token) {
+          status = 200;
+          response = {
+            message: "Su reservacion ha sido registrada con exito.",
+            data: {
+              reserve,
+            },
+            token,
+          };
+        }
       }
-    } else {
-      status = 400;
     }
+  } catch (error) {
+    response = {
+      message: error,
+    };
   }
   res.status(status).json(response);
 };
