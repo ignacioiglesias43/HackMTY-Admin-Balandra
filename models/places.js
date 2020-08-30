@@ -3,6 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   const Places = sequelize.define(
     "Places",
     {
+      lat: DataTypes.STRING,
+      lon: DataTypes.STRING,
       place_number: DataTypes.STRING,
       palm_roof: DataTypes.BOOLEAN,
       capacity: DataTypes.INTEGER,

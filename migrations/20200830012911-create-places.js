@@ -11,6 +11,12 @@ module.exports = {
       palm_roof: {
         type: Sequelize.BOOLEAN,
       },
+      lat: {
+        type: Sequelize.STRING,
+      },
+      lon: {
+        type: Sequelize.STRING,
+      },
       place_number: {
         allowNull: false,
         type: Sequelize.STRING,
