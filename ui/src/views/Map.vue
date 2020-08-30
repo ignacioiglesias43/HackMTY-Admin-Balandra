@@ -1,11 +1,13 @@
 <template>
-  <v-container>
+  <div class="home">
+    <Header />
     <MapComponent />
     <GetData />
-  </v-container>
+  </div>
 </template>
 
 <script>
+import Header from '@/components/organisms/Header'
 import MapComponent from "../components/organisms/MapContent";
 import GetData from "../components/molecules/GetData"
 export default {
@@ -13,10 +15,14 @@ export default {
   components: {
     MapComponent,
     GetData,
+    Header
   },
 };
 </script>
 
 <style>
-
+.home{
+  width: 100%;
+  background-color: #F9F79C;
+}
 </style>
