@@ -69,9 +69,9 @@ export default {
     message: null,
   }),
   methods: {
-    ...mapMutations(["changeAPM", "changePersons"]),
+    ...mapMutations(["changeAPM", "changePersons","changeQtn","changeHdc"]),
     goToMap() {
-      var qn = this.qntAdult + this.qntChild + this.qntOld;
+      var qn = this.qntAdult + this.qntChild + this.qntOld + this.qntHand;
       var max;
       switch (this.stateLight) {
         case 4:
@@ -94,8 +94,12 @@ export default {
       }else{
         if(qn>max)
           this.message="The number of people exceeds that allowed by the state of the pandemic."
-        else
+        else{
+          this.changeHdc = (this.qntHand > 0)
+          this.changeAPM()
+          this.changeQtn(qn)
           this.$router.push({ path: "/map" });
+        }
       }
     },
   },

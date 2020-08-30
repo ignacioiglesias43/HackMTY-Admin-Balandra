@@ -16,12 +16,9 @@
 <script>
 import Mapbox from "mapbox-gl";
 import axios from "axios";
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 import mapBoxComponent from "../molecules/mapBoxComponent";
-import {
-  MglNavigationControl,
-  MglMarker,
-} from "vue-mapbox";
+import { MglNavigationControl, MglMarker } from "vue-mapbox";
 
 export default {
   name: "mapComponent",
@@ -43,6 +40,7 @@ export default {
     this.mapbox = Mapbox;
   },
   methods: {
+    ...mapMutations(["changePlace"]),
     getColor(item) {
       switch (item.status) {
         case 0:
@@ -56,7 +54,12 @@ export default {
       }
     },
     clickMarker(item) {
-      console.log(item);
+      if ((item.status == 3 && this.hdc) || item.status == 0) {
+        this.changePlace({
+          name: item.place_number,
+          placeId: item.id,
+        });
+      }
     },
     chargePlaces: async function() {
       await axios.get("http://localhost:3000/places").then((response) => {
@@ -83,6 +86,9 @@ export default {
         }
         console.log(this.places);
       });
+      if (this.places[3].status == 0) this.places[3].status = 3;
+      if (this.places[4].status == 0) this.places[4].status = 3;
+      if (this.places[5].status == 0) this.places[5].status = 3;
       this.checkDispon();
     },
     checkDispon: async function() {
@@ -102,7 +108,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(["day", "timeIn", "timeOut", "stateLight"]),
+    ...mapState(["day", "timeIn", "timeOut", "stateLight", "hdc"]),
   },
 };
 </script>
