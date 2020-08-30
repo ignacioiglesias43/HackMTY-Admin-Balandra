@@ -14,6 +14,11 @@ Vue.use(VueRouter)
     path: '/map',
     name: 'Map',
     component: () => import('../views/Map.vue')
+  },
+  {
+    path: '/data',
+    name: 'Data',
+    component: () => import('../views/Data.vue')
   }
 ]
 

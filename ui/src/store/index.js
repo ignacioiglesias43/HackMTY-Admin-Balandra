@@ -11,7 +11,7 @@ export default new Vuex.Store({
     timeIn: null, 
     timeOut: null,
     car: null,
-    stateLight: "5",
+    stateLight: 4,
     persons: 0,
   },
   mutations: {
@@ -49,7 +49,7 @@ export default new Vuex.Store({
           case 'medio': lightNumber=2; break;
           case 'bajo': lightNumber=1; break;
         }
-        commit('setUserData',lightNumber)
+        commit('setStateLight',lightNumber)
       })
     }
   },
