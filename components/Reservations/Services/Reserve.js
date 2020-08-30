@@ -16,8 +16,12 @@ const placeDAL = require("../../Places/PlaceDAL");
 const dal = require("../ReservationDAL");
 const jwt = require("jsonwebtoken");
 const { jwtConfig } = require("../../../libs/utils");
-module.exports = async (
-  {
+module.exports = async (req, res) => {
+  let status = 500;
+  let response = {
+    message: "Error al realizar su reservacion.",
+  };
+  const {
     userId,
     placeId,
     parkingId,
@@ -28,13 +32,7 @@ module.exports = async (
     date,
     arrival,
     departure,
-  },
-  res
-) => {
-  let status = 500;
-  let response = {
-    message: "Error al realizar su reservacion.",
-  };
+  } = JSON.parse(req);
   try {
     if (userId && placeId && date && arrival && departure) {
       const reserve = await dal.create({
