@@ -1,9 +1,12 @@
 <template>
   <div class="map-container">
+<<<<<<< HEAD
     <h3>Has "click" sobre la zona en la que deseas estar ubicada</h3>
     <mapBoxComponent :center="center">
+=======
+    <mapBoxComponent :center="center" v-if="loaded">
+>>>>>>> 0dc516e8571776f6a47395310ded1284df56829e
       <MglNavigationControl position="bottom-right" />
-      <MglGeolocateControl position="bottom-right" />
       <MglMarker
         v-for="(item, index) in places"
         v-bind:key="index"
@@ -22,7 +25,6 @@ import { mapState } from "vuex";
 import mapBoxComponent from "../molecules/mapBoxComponent";
 import {
   MglNavigationControl,
-  MglGeolocateControl,
   MglMarker,
 } from "vue-mapbox";
 
@@ -31,6 +33,7 @@ export default {
   data() {
     return {
       places: [],
+      loaded: false,
       reservations: [],
       center: [-110.324411, 24.321483],
     };
@@ -38,7 +41,6 @@ export default {
   components: {
     mapBoxComponent,
     MglNavigationControl,
-    MglGeolocateControl,
     MglMarker,
   },
   created() {
@@ -47,11 +49,16 @@ export default {
   },
   methods: {
     getColor(item) {
-      return item.status == 0
-        ? "#a7fa98"
-        : item.status == 1
-        ? "#f0f"
-        : "#7a7a7a";
+      switch (item.status) {
+        case 0:
+          return "#a7fa98";
+        case 1:
+          return "#ff0000";
+        case 2:
+          return "#7a7a7a";
+        case 3:
+          return "#91bbff";
+      }
     },
     clickMarker(item) {
       console.log(item);
@@ -89,9 +96,14 @@ export default {
         .then((response) => {
           console.log(response.data.reservations);
           response.data.reservations.forEach((e) => {
-            console.log(JSON.stringify(e));
+            if (e.date.substr(0, 10) == this.day) {
+              if (e.arrival > this.timeIn && e.arrival < this.timeOut) {
+                this.places.find((f) => f.id == e.Place.id).status = 1;
+              }
+            }
           });
         });
+      this.loaded = true;
     },
   },
   computed: {

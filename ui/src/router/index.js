@@ -28,4 +28,9 @@ const router = new VueRouter({
   routes
 })
 
+router.afterEach((to) => {
+ Vue.nextTick(() => {
+      document.title = to.meta.title || 'Balandra Reserve';
+  });
+});
 export default router

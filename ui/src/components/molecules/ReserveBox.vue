@@ -88,7 +88,7 @@
                 :rules="[() => !!timeOut || 'This field is required']"
               ></v-text-field>
             </template>
-            <v-time-picker v-model="timeOut" scrollable>
+            <v-time-picker v-model="timeOut" scrollable :min="timeIn">
               <v-spacer></v-spacer>
               <v-btn text color="primary" @click="menuTPO = false"
                 >Cancel</v-btn

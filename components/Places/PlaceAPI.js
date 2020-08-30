@@ -18,4 +18,8 @@ Place.get("/:id", (req, res) => {
   services.getById(req.params, res);
 });
 
+Place.post("/", (req, res) => {
+  services.postByTime(req.body, res);
+});
+
 module.exports = Place;

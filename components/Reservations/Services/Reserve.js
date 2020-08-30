@@ -14,6 +14,8 @@
  */
 const placeDAL = require("../../Places/PlaceDAL");
 const dal = require("../ReservationDAL");
+const jwt = require("jsonwebtoken");
+const { jwtConfig } = require("../../../libs/utils");
 module.exports = async (
   {
     userId,
@@ -34,34 +36,46 @@ module.exports = async (
     message: "Error al realizar su reservacion.",
   };
   if (userId && placeId && date && arrival && departure) {
-    const place = await placeDAL.findOne({
-      where: {
-        id: placeId,
-      },
+    const reserve = await dal.create({
+      userId,
+      placeId,
+      parkingId,
+      adults,
+      older_adults,
+      children,
+      handicapped,
+      date,
+      arrival,
+      departure,
     });
-    if (adults + older_adults + children + handicapped <= place.capacity) {
-      const reserve = await dal.create({
-        userId,
-        placeId,
-        parkingId,
-        adults,
-        older_adults,
-        children,
-        handicapped,
-        date,
-        arrival,
-        departure,
-      });
-      if (reserve) {
+    if (reserve) {
+      const token = jwt.sign(
+        {
+          userId,
+          placeId,
+          parkingId,
+          adults,
+          older_adults,
+          children,
+          handicapped,
+          date,
+          arrival,
+          departure,
+        },
+        jwtConfig.privateKey,
+        {
+          expiresIn: jwtConfig.expiration,
+        }
+      );
+      if (token) {
         status = 200;
         response = {
           message: "Su reservacion ha sido registrada con exito.",
           data: {
             reserve,
           },
+          token,
         };
-      } else {
-        status = 400;
       }
     } else {
       status = 400;
