@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      user_id: {
+      userId: {
         allowNull: true,
         type: Sequelize.INTEGER,
         references: {
@@ -16,7 +16,7 @@ module.exports = {
           key: "id",
         },
       },
-      place_id: {
+      placeId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -24,7 +24,7 @@ module.exports = {
           key: "id",
         },
       },
-      parking_id: {
+      parkingId: {
         allowNull: true,
         type: Sequelize.INTEGER,
         references: {
