@@ -19,7 +19,7 @@ Reservation.get("/", (req, res) => {
   services.getAll(req, res);
 });
 
-Reservation.get("/:id", middleware, (req, res) => {
+Reservation.get("/:id", (req, res) => {
   services.getById(req.params, res);
 });
 
