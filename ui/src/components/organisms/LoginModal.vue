@@ -8,24 +8,34 @@
     persistent
   >
     <v-card class="card-ctn">
-      <v-card-title>{{modalTitle}}</v-card-title>
+      <v-card-title class="headline">{{modalTitle}}</v-card-title>
       <form ref="form">
-        <v-text-field
-          v-model="name"
-          label="Full name"
-          v-if="!signModal.type "
-          :rules="[() => !!name || 'This field is required']"
-        ></v-text-field>
-        <v-text-field
-          v-model="password"
-          label="Password"
-          :rules="[() => !!password || 'This field is required']"
-        ></v-text-field>
-        <v-text-field
-          v-model="email"
-          label="Email"
-          :rules="[() => !!email || 'This field is required']"
-        ></v-text-field>
+        <v-container>
+          <v-row>
+            <v-text-field
+              v-model="name"
+              prepend-icon="mdi-account"
+              label="Full name"
+              v-if="!signModal.type "
+              :rules="[() => !!name || 'This field is required']"
+            ></v-text-field>
+            <v-text-field
+              v-model="email"
+              prepend-icon="mdi-email"
+              label="Email"
+              :rules="[() => !!email || 'This field is required']"
+            ></v-text-field>
+            <v-text-field
+              prepend-icon="mdi-lock"
+              :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+              v-model="password"
+              label="Password"
+              :type="showPassword ? 'text' : 'password'"
+              @click:append="showPassword = !showPassword"
+              :rules="[() => !!password || 'This field is required']"
+            ></v-text-field>
+          </v-row>
+        </v-container>
       </form>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -45,6 +55,7 @@ export default {
       email: null,
       password: null,
       name: null,
+      showPassword: false,
     };
   },
   methods: {
@@ -52,7 +63,7 @@ export default {
   },
   computed: {
     ...mapState(["signModal"]),
-    modalTitle: function() {
+    modalTitle: function () {
       return this.signModal.type ? "Log In" : "Sign In";
     },
   },
@@ -61,6 +72,6 @@ export default {
 
 <style>
 .card-ctn {
-  padding: 20px 50px 5px
+  padding: 20px 50px 5px;
 }
 </style>
