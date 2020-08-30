@@ -14,4 +14,12 @@ Reservation.post("/", (req, res) => {
   services.reserve(req.body, res);
 });
 
+Reservation.get("/", (req, res) => {
+  services.getAll(req, res);
+});
+
+Reservation.get("/:id", (req, res) => {
+  services.getById(req.params, res);
+});
+
 module.exports = Reservation;

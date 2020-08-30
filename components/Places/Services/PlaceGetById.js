@@ -7,7 +7,7 @@ module.exports = async ({ id }, res) => {
   };
   const place = await dal.findOne({
     where: {
-      id,
+      id: id,
     },
   });
   if (place && place instanceof dal) {
