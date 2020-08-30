@@ -10,9 +10,9 @@ module.exports = {
       "Reservations",
       [
         {
-          user_id: 1,
-          place_id: 2,
-          parking_id: 1,
+          userId: 1,
+          placeId: 2,
+          parkingId: 1,
           adults: 1,
           older_adults: 1,
           children: 1,

@@ -33,7 +33,7 @@
               <v-btn text color="primary" @click="menuDate = false"
                 >Cancel</v-btn
               >
-              <v-btn text color="primary" @click="$refs.menu.save(date)"
+              <v-btn text color="primary" @click="$refs.menuDate.save(date)"
                 >Ok</v-btn
               >
             </v-date-picker>
@@ -64,7 +64,7 @@
               <v-btn text color="primary" @click="menuTPI = false"
                 >Cancel</v-btn
               >
-              <v-btn text color="primary" @click="$refs.menu.save(timeIn)"
+              <v-btn text color="primary" @click="$refs.menuTPI.save(timeIn)"
                 >Ok</v-btn
               >
             </v-time-picker>
@@ -95,7 +95,7 @@
               <v-btn text color="primary" @click="menuTPO = false"
                 >Cancel</v-btn
               >
-              <v-btn text color="primary" @click="$refs.menu.save(timeOut)"
+              <v-btn text color="primary" @click="$refs.menuTPO.save(timeOut)"
                 >Ok</v-btn
               >
             </v-time-picker>
@@ -103,7 +103,7 @@
         </v-col>
         <v-col cols="12" sm="6" md="3">
           <v-menu
-            ref="menu"
+            ref="menuCar"
             v-model="menuCar"
             :close-on-content-click="true"
             transition="scale-transition"
@@ -188,9 +188,19 @@ export default {
     AddPersonModal,
   },
   methods: {
-    ...mapMutations(["changeAPM"]),
+    ...mapMutations([
+      "changeAPM",
+      "changeDate",
+      "changeTimeIn",
+      "changeTimeOut",
+      "changeCar",
+    ]),
     addPeople() {
       if (this.$refs.form.validate()) {
+        this.changeDate(this.date);
+        this.changeTimeIn(this.timeIn);
+        this.changeTimeOut(this.timeOut);
+        this.changeCar(this.car);
         this.changeAPM();
       }
     },

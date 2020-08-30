@@ -10,7 +10,148 @@ module.exports = {
       "Parkings",
       [
         {
-          type_of_car: "Ninguno",
+          type_of_car: "Automovil",
+        },
+        {
+          type_of_car: "Camioneta",
+        },
+        {
+          type_of_car: "Motocicleta",
+        },
+        {
+          type_of_car: "Automovil",
+        },
+        {
+          type_of_car: "Camioneta",
+        },
+        {
+          type_of_car: "Motocicleta",
+        },
+        {
+          type_of_car: "Automovil",
+        },
+        {
+          type_of_car: "Camioneta",
+        },
+        {
+          type_of_car: "Motocicleta",
+        },
+        {
+          type_of_car: "Automovil",
+        },
+        {
+          type_of_car: "Camioneta",
+        },
+        {
+          type_of_car: "Motocicleta",
+        },
+        {
+          type_of_car: "Automovil",
+        },
+        {
+          type_of_car: "Camioneta",
+        },
+        {
+          type_of_car: "Motocicleta",
+        },
+        {
+          type_of_car: "Automovil",
+        },
+        {
+          type_of_car: "Camioneta",
+        },
+        {
+          type_of_car: "Motocicleta",
+        },
+        {
+          type_of_car: "Automovil",
+        },
+        {
+          type_of_car: "Camioneta",
+        },
+        {
+          type_of_car: "Motocicleta",
+        },
+        {
+          type_of_car: "Automovil",
+        },
+        {
+          type_of_car: "Camioneta",
+        },
+        {
+          type_of_car: "Motocicleta",
+        },
+        {
+          type_of_car: "Automovil",
+        },
+        {
+          type_of_car: "Camioneta",
+        },
+        {
+          type_of_car: "Motocicleta",
+        },
+        {
+          type_of_car: "Automovil",
+        },
+        {
+          type_of_car: "Camioneta",
+        },
+        {
+          type_of_car: "Motocicleta",
+        },
+        {
+          type_of_car: "Automovil",
+        },
+        {
+          type_of_car: "Camioneta",
+        },
+        {
+          type_of_car: "Motocicleta",
+        },
+        {
+          type_of_car: "Automovil",
+        },
+        {
+          type_of_car: "Camioneta",
+        },
+        {
+          type_of_car: "Motocicleta",
+        },
+        {
+          type_of_car: "Automovil",
+        },
+        {
+          type_of_car: "Camioneta",
+        },
+        {
+          type_of_car: "Motocicleta",
+        },
+        {
+          type_of_car: "Automovil",
+        },
+        {
+          type_of_car: "Camioneta",
+        },
+        {
+          type_of_car: "Motocicleta",
+        },
+        {
+          type_of_car: "Automovil",
+        },
+        {
+          type_of_car: "Camioneta",
+        },
+        {
+          type_of_car: "Motocicleta",
+        },
+        {
+          type_of_car: "Automovil",
+        },
+        {
+          type_of_car: "Camioneta",
+        },
+        {
+          type_of_car: "Motocicleta",
         },
         {
           type_of_car: "Automovil",
