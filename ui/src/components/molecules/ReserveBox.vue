@@ -1,5 +1,10 @@
 <template>
-  <v-container>
+<div class="b-reserve">
+  <v-container class="photo-reserve">
+    
+  </v-container>
+
+  <v-container class="reserve">
     <h1>Reserve</h1>
     <v-form ref="form">
       <v-row>
@@ -135,15 +140,18 @@
               <v-list-item-title>{{ item.nombre }}</v-list-item-title>
               {{ item.tipo }}
               <v-spacer></v-spacer>
-              <v-btn color="error">Delete</v-btn>
+              <v-btn color="error">
+                <v-icon>mdi-delete</v-icon>Delete
+                </v-btn>
             </list-item>
-            <v-btn @click="addPeople">Add Person</v-btn>
+            <v-btn @click="addPeople" class="btn-add"><v-icon>mdi-account-check-outline</v-icon>Add Person</v-btn>
           </v-list>
         </v-col>
       </v-row>
     </v-form>
     <AddPersonModal />
   </v-container>
+  </div>
 </template>
 
 date: variable donde se guarda la fecha seleccionada por el usuario. timeIn:
@@ -190,4 +198,22 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.b-reserve{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.reserve {
+  text-align: center;
+  flex-basis: calc(33.3% - 10px);
+  border: 0.1rem solid #B5B5B5;
+  padding: 50px;
+  background-color: #ffffff;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.397), 0 17px 50px 0 rgba(0,0,0,0.397);
+}
+.photo-reserve{
+  
+}
+
+</style>

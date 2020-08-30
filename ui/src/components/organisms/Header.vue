@@ -1,15 +1,16 @@
 La portada, el slider no slider
 
 <template>
-  <div>
-      <v-img 
-        src="../../assets/portada.jpg"
-        width='100%'
-        max-height="300"
-    >
+  <header id="header">
+      <a href="/">
+        <v-img 
+            src="../../assets/logo.png"
+            width=300
+        ></v-img>
+       </a>
           <LoginMessage />
-      </v-img>
-  </div>
+      
+  </header>
 </template>
 
 <script>
@@ -23,5 +24,10 @@ export default {
 </script>
 
 <style>
-
+    #header {
+        background-image: url('../../assets/portada.png');
+        background-position: center;
+        background-size: cover;
+        padding: 2%;
+    }
 </style>
