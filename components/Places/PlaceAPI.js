@@ -14,4 +14,8 @@ Place.get("/", (req, res) => {
   services.getAll(res);
 });
 
+Place.get("/:id", (req, res) => {
+  services.getById(req.params, res);
+});
+
 module.exports = Place;
