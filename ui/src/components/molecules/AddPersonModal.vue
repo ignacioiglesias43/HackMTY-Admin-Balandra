@@ -46,6 +46,7 @@
           <v-btn color="error" @click="changeAPM">Cancel</v-btn>
           <v-btn @click="goToMap">Ok</v-btn>
         </v-card-actions>
+      <h5>{{message}}</h5>
       </v-card>
     </v-dialog>
   </div>
@@ -65,24 +66,47 @@ export default {
     qntChild: 0,
     qntOld: 0,
     qntHand: 0,
-    qn: null,
+    message: null,
   }),
   methods: {
-    ...mapMutations(["changeAPM","changePersons"]),
-    goToMap(){
-        this.qn = this.qntAdult + this.qntChild + this.qntOld
-        this.changePersons(this.qn)
-        this.$router.push({path:'/map'})
-    }
+    ...mapMutations(["changeAPM", "changePersons"]),
+    goToMap() {
+      var qn = this.qntAdult + this.qntChild + this.qntOld;
+      var max;
+      switch (this.stateLight) {
+        case 4:
+          max = 0;
+          break;
+        case 3:
+          max = 4;
+          break;
+        case 2:
+          max = 6;
+          break;
+        case 1:
+          max = 10;
+          break;
+      }
+      this.changePersons(this.qn);
+      console.log(qn)
+      if(qn==0){
+        this.message="At least must be one person."
+      }else{
+        if(qn>max)
+          this.message="The number of people exceeds that allowed by the state of the pandemic."
+        else
+          this.$router.push({ path: "/map" });
+      }
+    },
   },
   computed: {
-    ...mapState(["addPersonModal"]),
+    ...mapState(["addPersonModal", "stateLight"]),
   },
 };
 </script>
 
 <style>
 .card-ctn {
-  padding: 20px 50px 5px
+  padding: 20px 50px 5px;
 }
 </style>

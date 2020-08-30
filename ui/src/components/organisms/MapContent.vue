@@ -1,6 +1,6 @@
 <template>
   <div class="map-container">
-    <mapBoxComponent :center="center">
+    <mapBoxComponent :center="center" v-if="loaded">
       <MglNavigationControl position="bottom-right" />
       <MglGeolocateControl position="bottom-right" />
       <MglMarker
@@ -30,6 +30,7 @@ export default {
   data() {
     return {
       places: [],
+      loaded: false,
       reservations: [],
       center: [-110.324411, 24.321483],
     };
@@ -46,11 +47,16 @@ export default {
   },
   methods: {
     getColor(item) {
-      return item.status == 0
-        ? "#a7fa98"
-        : item.status == 1
-        ? "#f0f"
-        : "#7a7a7a";
+      switch (item.status) {
+        case 0:
+          return "#a7fa98";
+        case 1:
+          return "#ff0000";
+        case 2:
+          return "#7a7a7a";
+        case 3:
+          return "#91bbff";
+      }
     },
     clickMarker(item) {
       console.log(item);
@@ -88,9 +94,14 @@ export default {
         .then((response) => {
           console.log(response.data.reservations);
           response.data.reservations.forEach((e) => {
-            console.log(JSON.stringify(e));
+            if (e.date.substr(0, 10) == this.day) {
+              if (e.arrival > this.timeIn && e.arrival < this.timeOut) {
+                this.places.find((f) => f.id == e.Place.id).status = 1;
+              }
+            }
           });
         });
+      this.loaded = true;
     },
   },
   computed: {

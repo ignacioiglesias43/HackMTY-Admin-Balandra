@@ -30,7 +30,7 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn color="error" @click="changeSM({state: false, type: false})">Cancel</v-btn>
-        <v-btn>Regsiter</v-btn>
+        <v-btn>Register</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
